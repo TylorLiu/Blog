@@ -1,7 +1,7 @@
 ---
 title: 踩坑记2—SpringDataJPA合集
 date: 2018/1/24 17:40
-tags: SpringDataJPA
+tags: [Spring,JPA]
 category: troubleshooting
 ---
 
