@@ -1,8 +1,8 @@
 ---
 title: 踩坑记2—SpringDataJPA合集
 date: 2018/1/24 17:40
-tags: troubleshooting SpringDataJPA
-category: mistake
+tags: SpringDataJPA
+category: troubleshooting
 ---
 
 ### lombok@Data注解 pojo -- 存在外键关联
