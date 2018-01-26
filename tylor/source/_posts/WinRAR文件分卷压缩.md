@@ -10,7 +10,7 @@ category: Tips
 - 文件要是能切成几块就好了，怎么切呢？
 
 用WinRAR分卷压缩：
-![示例](../image/tips/winRAR.jpg)
+![pqyWY4.jpg](https://s1.ax1x.com/2018/01/26/pqyWY4.jpg)
 
 刚知道的时候，感觉像是突破了知见障
 - 原来WinRAR还有这功能，基本天天用却视而不见
