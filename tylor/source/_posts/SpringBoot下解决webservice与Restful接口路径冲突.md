@@ -243,6 +243,14 @@ NIO监听到web请求->分配线程处理->Http处理器解析->CoyoteAdapter映
     }
 
 ````
+上面的几种Wrapper都是根据web.xml或ServletRegisterBean中设置的Url Pattern产生的，用来根据请求路径映射相应的Servlet。对应规则如下：
+- path.endsWith("/*") : wildcardWrapper 通配符匹配
+- path.startsWith("*.")  : extensionWrapper 扩展名匹配
+- path.equals("/") : defaultWrapper 默认Wrapper
+- 其他url Pattern : exactWrapper 精确匹配
+详见Mapper.addWrapper()方法。
+而实际的路径比对过程中，匹配规则的优先顺序是：
+exactWrapper>wildcardWrapper>extensionWrapper> welcomeResources(静态资源)>defaultWrapper。
 而此时的context中的只有defaultWrapper和值为/services的wildcardWrapper：
 
 [![93XttU.md.jpg](https://s1.ax1x.com/2018/02/09/93XttU.md.jpg)](https://imgchr.com/i/93XttU)
@@ -350,8 +358,8 @@ public class WebServiceConfig {
 - 如果采取cxf.path =/services/SysConfigService的方式，则可以在SysConfigService的路径下扩展其它ws接口
 
 调试了几遍Endpoint.publish的过程，没有发现与cxfServletRegistration有明显的关联，暂时放弃这方面的探索。
-后来研究了下SpringWs的实现，发现对于每一个Webservice接口都可以通过Wsdl11Definition.setLocationUri("/services/SysConfigService")指定接口的地址，而不是必须置于某个指定路径下。
-只需要在注入的ServletRegistrationBean中，注册每个webservice的准确路径->exactWrappers,即可避免拦截到Rest接口的请求。
+由于时间还算充足，没必要苟且妥协，我又研究了下SpringWs，发现对于每一个Webservice接口都可以通过Wsdl11Definition.setLocationUri("/services/SysConfigService")指定接口的地址，而不是必须置于某个指定路径下。
+所以只需要在ServletRegistrationBean加入每个webservice的准确路径的urlMapping,即可避免拦截到Rest接口的请求。
 ````java
 @Bean
 public ServletRegistrationBean messageDispatcherServlet(ApplicationContext applicationContext) {
@@ -361,4 +369,4 @@ public ServletRegistrationBean messageDispatcherServlet(ApplicationContext appli
     return new ServletRegistrationBean(servlet, "/services/SysConfigService/SysConfigService.wsdl", "/services/SysConfigService");
 }
 ````
-CXF Webservice切换到SpringWs的步骤改天再写，坑还是有一些。
+CXF Webservice切换到SpringWs的步骤改天再写。

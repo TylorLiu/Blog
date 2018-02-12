@@ -10,7 +10,7 @@ category: troubleshooting
 
 从内存溢出分析的角度来看，内存主要分为栈内存、堆内存、直接内存和MetaSpace(java8之前是堆内的永久代)。
 下面主要讲下这几种内存溢出的场景：
-###1. StackOverflowError 栈内存溢出
+### 1. StackOverflowError 栈内存溢出
 这里stack指的是线程的独立内存空间，主要保存方法执行信息，每个方法调用时都会产生一个栈帧，当栈深度超过虚拟机分配给线程的栈大小时就会出现StackOverflowError。
 出现这个问题有以下几种可能：
 - 分配的栈内存太小，这种不太常见 JVM默认栈内存-Xss1024k，足够一般线程使用。
@@ -19,9 +19,15 @@ category: troubleshooting
 
 问题出现后，根据stackTrace错误堆栈基本上就可以定位到问题位置。
 
-PS：高并发应用可以调小栈内存-Xss512k或256k 来节约内存。
+PS：高并发应用创建过多线程也可能引起栈内存OOM，有开源、节流两种思路应对：
+- 开源：提升栈内存总量
+  * 扩大服务器内存
+  * 减少堆内存-Xms -Xmx
+- 节流
+  * 减少每个线程分配的栈内存 -Xss512k或256k 
+  * 通过负载均衡、拒绝&延迟响应等策略减少线程并发数
 
-###2. OutOfMemoryError: Java heap space 堆内存溢出
+### 2. OutOfMemoryError: Java heap space 堆内存溢出
 堆内存主要用来存放java对象，堆内存不够了就会报错。
 问题有两种可能的原因：
 1. 堆内存设置太小，无法满足应用正常运行的需要(包括基本运行以及承载高峰期的内存压力)；
@@ -38,7 +44,7 @@ PS：高并发应用可以调小栈内存-Xss512k或256k 来节约内存。
 另外，如果多次报错时打出的strackTrace都在同一个位置，建议着重看一下。如果是某些框架内部报错，先去官网或者Google一下。
 
 
-###3. OutOfMemoryError: PermGen space / MetaSpace 永久代或Metaspace溢出
+### 3. OutOfMemoryError: PermGen space / MetaSpace 永久代或Metaspace溢出
 
 这里主要讲类信息导致的内存溢出，类信息在java8之前存放在永久代，java8之后存在Metaspace中。
 应用加载的类信息主要分两种: class文件和运行过程中动态生成的类。除非特地限制-XX:MaxMetaspaceSize或-XX:MaxPermSize大小，一般该问题都是由动态类引起的。
@@ -67,11 +73,10 @@ private static Map<Class<?>, JAXBContext> contextMap = new ConcurrentHashMap<>()
 
 ````
 还有一种类似的情况，使用Apache-CXF生成的Webservice-client，每次初始化也会生成一些动态类，应该使用单例模式避免重复初始化。
-
-###4. 堆外内存溢出
+另外，CGLib字节码增强实现的动态代理以及Groovy等动态语言、动态产生的JSP文件等都会动态加载类信息，使用时需要注意。
+### 4. 堆外内存溢出
 java NIO通信时默认会使用ByteBuffer缓存数据，如果用完忘记调用ByteBuffer.release()方法，容易导致内存泄漏。
 Tips：
 - JVisualVm 装上Buffer Pools插件就可以监视java进程堆外内存的使用情况了，分别显示Direct、Mapped
 - 使用了Netty应用在启动时可以用-Dio.netty.leakDetection.level=PARANOID 检测一下是否有内存泄漏情况，根据错误堆栈可以定位到泄漏点
-
 
