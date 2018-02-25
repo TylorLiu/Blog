@@ -62,4 +62,8 @@ JDK可视化工具
   - BTrace动态日志跟踪
   - MBeans 
   - VisualGC 
+<<<<<<< HEAD
   - JConsole Plugins
+=======
+  - JConsole Plugins
+>>>>>>> 55912d57fd37b9248492d31a65cd27c2425794e3
