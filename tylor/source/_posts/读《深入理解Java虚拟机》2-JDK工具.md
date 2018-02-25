@@ -61,9 +61,5 @@ JDK可视化工具
 - JVisualVM 可集成各种插件的故障处理工具，常用插件：
   - BTrace动态日志跟踪
   - MBeans 
-  - VisualGC 
-<<<<<<< HEAD
+  - VisualGC
   - JConsole Plugins
-=======
-  - JConsole Plugins
->>>>>>> 55912d57fd37b9248492d31a65cd27c2425794e3
