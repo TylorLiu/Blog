@@ -1,5 +1,5 @@
 ---
-title: Linux服务器性能参数
+title: Linux服务器性能优化参数
 date: 2018/2/10 14:42
 tags: [Linux,性能]
 category: tips
