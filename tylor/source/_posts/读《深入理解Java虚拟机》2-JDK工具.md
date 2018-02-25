@@ -27,6 +27,39 @@ FGC：老年代垃圾回收次数
 FGCT：老年代垃圾回收消耗时间
 GCT：垃圾回收消耗总时间
 
-- jinfo [option] pid 查看配置信息 
+- jinfo [option] vmid 查看配置信息 
   - -sysprops查看System.getProperties()
-  - -flag name=value 查询/设置jvm参数
+  - -flag name 查询jvm参数
+  - -flag name=value 设置jvm参数
+  
+- jmap [option] vmid 生成堆dump等功能
+[![9YqUXj.md.png](https://s1.ax1x.com/2018/02/16/9YqUXj.md.png)](https://imgchr.com/i/9YqUXj)
+
+- jhat 堆dump分析工具
+
+- jstack [option] vmid 生成线程快照
+  - -F 请求不响应时强制输出线程堆栈
+  - -l 附加锁信息
+  - -m 附加本地方法堆栈
+  
+  Thread.getAllStackTraces()查看线程堆栈
+  ````java
+   Map<Thread, StackTraceElement[]> map = Thread.getAllStackTraces();
+   for (Entry<Thread,StackTraceElement[]> entry :map.entrySet()){
+       if (entry.getKey().equals(Thread.currentThread()))
+           continue;
+       System.out.println("线程："+entry.getKey().getName());
+       StackTraceElement[] traceElements = entry.getValue();
+       for (int i = 0; i <traceElements.length ; i++) {
+           System.out.println(traceElements[i].toString());
+       }
+   }
+  ````
+  
+JDK可视化工具
+- JConsole 监控管理控制台，可视化jstate、jinfo、jstack等功能
+- JVisualVM 可集成各种插件的故障处理工具，常用插件：
+  - BTrace动态日志跟踪
+  - MBeans 
+  - VisualGC 
+  - JConsole Plugins
