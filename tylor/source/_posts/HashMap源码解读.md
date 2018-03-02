@@ -1,8 +1,8 @@
 ---
 title: HashMap源码解读
 date: 18/2/2 23:37
-tags: [JDK,HashMap]
-category: 源码
+tags: JDK
+category: note
 ---
 
 逐行解读HashMap

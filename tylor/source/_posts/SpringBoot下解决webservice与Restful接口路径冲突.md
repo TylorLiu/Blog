@@ -1,7 +1,7 @@
 ---
 title: SpringBoot下解决webservice与Restful接口路径冲突
 date: 2018/2/9 10:02
-tags: [cxf,webservice]
+tags: [cxf,WebService]
 category: troubleshooting
 ---
 

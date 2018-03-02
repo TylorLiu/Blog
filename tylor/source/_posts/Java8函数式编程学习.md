@@ -1,7 +1,7 @@
 ---
 title: Java8函数式编程学习
 date: 2018-02-01 22:30:08
-tags: [Java8,Functional]
+tags: JDK
 category: blog
 ---
 Java8中新增FunctionalInterface注解用来标记函数式接口，并且定义了4种基本函数式接口：

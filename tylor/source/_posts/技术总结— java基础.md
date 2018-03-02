@@ -1,7 +1,7 @@
 ---
 title: 技术总结— java基础
 date: 2018/3/1 19:21
-tags: jdk
+tags: JDK
 category: 总结
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: JVM内存溢出分析总结
 date: 2018/1/29 16:03
-tags: [JVM,内存溢出]
+tags: JVM
 category: troubleshooting
 ---
 开个文总结下我遇到的内存溢出问题，放个JVM的图以供参考：

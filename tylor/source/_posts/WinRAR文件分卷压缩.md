@@ -2,7 +2,7 @@
 title: WinRAR文件分卷压缩
 date: 2018/1/25 11:13
 tags: WinRAR
-category: Tips
+category: tips
 ---
 
 分类Tips就是记录一些小技巧，很简单，可能很多人都知道，但是不知道的时候就比较容易捉急，比如想上传个文件，但是超过单个文件最大限制，那怎么传呢？

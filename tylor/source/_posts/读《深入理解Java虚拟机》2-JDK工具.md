@@ -2,7 +2,7 @@
 title: 读《深入理解Java虚拟机》2-JDK工具
 date: 2018/2/11 13:47
 tags: tools
-category: [notes]
+category: note
 ---
 JDK bin目录下提供了很多工具，大部分基于lib/tools.jar。
 工具命令命名规则参考了unix系统的命令

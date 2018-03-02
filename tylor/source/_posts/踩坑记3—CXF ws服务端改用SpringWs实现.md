@@ -1,7 +1,7 @@
 ---
 title: 踩坑记3—CXF ws服务端改用SpringWs实现
 date: 2018/2/10 10:43
-tags: [SpringWs]
+tags: WebService
 category: troubleshooting
 ---
 
