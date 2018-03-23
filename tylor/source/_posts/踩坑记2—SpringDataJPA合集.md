@@ -22,9 +22,9 @@ public void saveDevice(Device device){
 }
 ````
 
-### 非事务性方法调用@Transactional方法，偶尔会导致异常
+### for循环内调用@Transactional方法，偶现异常
 Spring - No EntityManager with actual transaction available for current thread - cannot reliably process 'persist' call
-
+将外部方法也标记@Transactional，循环内部捕获异常，内部改为@Transactional(propagation = Propagation.REQUIRES_NEW)
 
 ### 外键关联对象先后save时偶现
 - 错误问题：

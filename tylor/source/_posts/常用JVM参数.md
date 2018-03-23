@@ -50,3 +50,8 @@ category: memo
 -XX:+HeapDumpOnCtrlBreak|Crtl+Break产生dump
 ### 其他
 -Xverify:none 跳过编译检查
+服务器推荐GC参数：
+-Xloggc:gc.log
+-XX:+PrintGCDetails
+-XX:+PrintGCApplicationStoppedTime 
+-XX:+PrintGCApplicationConcurrentTime
