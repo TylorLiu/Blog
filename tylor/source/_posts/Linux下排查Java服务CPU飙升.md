@@ -14,5 +14,5 @@ ps -mp PID -o THREAD,tid,time
 //查到的线程号转成 16进制
 printf "%x\n" tid
 // 打印线程堆栈
-jstack 8514|grep tid 
+jstack PID|grep tid 
 ````
