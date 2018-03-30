@@ -6,7 +6,7 @@ category: tips
 ---
 ### 示例： 
 ````
-curl -v  -H Content-Type:application/json -H appKey:app2DHYBU6 -X POST --data '[{ "indexCode": "dev0000628"}]' http://10.41.10.21/wvod/services/v1/storageService/record/start
+curl -v  -H Content-Type:application/json -H appKey:2DHYBU6 -X POST --data '[{ "indexCode": "00001"}]' http://10.41.10.21/start
 ````
 
 - -v 展示详细信息

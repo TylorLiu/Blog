@@ -98,3 +98,11 @@ ReentrantReadWriteLock包含readLock和writeLock，共享一个Syn子，其中re
 ### volatile
 - 防止指令重排
 - 变量使用前从主存刷新
+
+### Condition应用
+    - BlockingQueue
+        - notEmpty.signal()
+        - notFull.signal()
+    - CyclicBarrier
+        - trip.signalAll()
+    - ScheduledThreadPoolExecutor
