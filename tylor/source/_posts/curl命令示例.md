@@ -14,6 +14,8 @@ curl -v  -H Content-Type:application/json -H appKey:2DHYBU6 -X POST --data '[{ "
 - -X POST 指定为Post请求
 - --data HTTP POST方式传送数据
 
+更多用法可以参考[阮一峰的curl用法指南](http://www.ruanyifeng.com/blog/2019/09/curl-reference.html)
+
 
 ### windows修改命令行字符编码
 
