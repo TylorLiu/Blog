@@ -2,7 +2,7 @@
 title: 使用Python做分词统计遇到的几个问题
 date: 2020-09-04 18:49:22
 tags: Python
-category:blog
+category: blog
 ---
 ### 背景
 需要对几百条问题原因进行分类汇总，分析出主要是哪些方面做的不到位，并进行针对性的改进。最开始想通过Excel统计，但是很繁琐，苦难是：
