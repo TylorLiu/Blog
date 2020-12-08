@@ -75,7 +75,7 @@ sitemap:
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/tylorliu/tylorliu.github.io.git
+  repo: https://github.com/TylorLiu/TylorLiu.github.io.git
   branch: master
   # repo: https://git.coding.net/leopardsnow/leopardsnow.git
   # branch: coding-pages
